@@ -173,6 +173,29 @@ eval(MUTATOR_TEST)
 console.log(GREEN_FOREGROUND, "*MUTATOR methods may return values")
 console.log("\n\n")
 
+
+//Closures
+console.log(GREEN_FOREGROUND,"*****Closures","\n\n")
+console.log(GREEN_FOREGROUND, "*A closure is a function that stores its environment so it can access it wherever it is executed")
+console.log(GREEN_FOREGROUND,'*"All functions are naturally closures" - javascript.info/closure')
+const CLOSURE_TEST = `
+let closure_test_function = (function(){
+  let a = true;
+  return function(){a = !a; return a}
+})()
+
+console.log(closure_test_function());
+console.log(closure_test_function());
+console.log(closure_test_function());
+`
+console.log(WHITE_FOREGROUND, CLOSURE_TEST);
+eval(CLOSURE_TEST)
+
+console.log("\n");
+
+
+
+
 //Promise and Callbacks
 console.log(GREEN_FOREGROUND, "*****Promises and callbacks","\n\n")
 console.log(GREEN_FOREGROUND, "*A promise is an object that represents the result/state of an asynchronous operation.")
@@ -183,11 +206,11 @@ console.log(GREEN_FOREGROUND, "*A callback is a function/arrow function meant to
 
 const PROMISE_TEST = `
 const fulfilledCallback = (result)=>{
-    console.log("The promise was fulfilled succesfully")
+    console.log("PROMISE_TEST >> The promise was fulfilled succesfully")
 }
 
 //using setTimeout to ensure true async
-const toBeResolved = (resolve, reject)=>{ setTimeout(()=>{resolve(true)},100)}
+const toBeResolved = (resolve, reject)=>{ setTimeout(()=>{resolve(true)},1)}
 
 let promise = Promise.resolve(toBeResolved) //alternatively we could use "new Promise(toBeResolved)"
 
@@ -195,13 +218,36 @@ promise.then(fulfilledCallback).catch(console.warn)
 `
 console.log(WHITE_FOREGROUND, PROMISE_TEST)
 eval(PROMISE_TEST)
-console.log(GREEN_FOREGROUND, "RESULT IS :")
+console.log(GREEN_FOREGROUND, "The result will be shown asynchronous (probably towards the end of execution)")
 
 
 //Await Async
 
+console.log("\n")
+console.log(GREEN_FOREGROUND, "*****Async/Await","\n\n")
+console.log(GREEN_FOREGROUND, "*async functions return a Promise object which is fulfilled when the function returns")
+console.log(GREEN_FOREGROUND, "*async functions can return promises explicetly ex: return new Promise(toBeExec)");
+console.log(GREEN_FOREGROUND, "*await can only be used in async functions and makes the \"thread\" sleep until the awaited promise resolves or rejects");
+
+const ASYNC_AWAIT_TEST = `
+async function sleep(time_in_seconds){
+    return new Promise((resolve, reject)=>{setTimeout(()=>{resolve(true);}, time_in_seconds*1000)})
+}
+async function asyncTestFunction(){
+    console.log("ASYNC_AWAIT_TEST >> Part 1")
+
+    await sleep(2);
+    console.log("ASYNC_AWAIT_TEST >> Part 2, two seconds have passed")
+
+    await sleep(4);
+    console.log("ASYNC_AWAIT_TEST >> Part 3, 4 seconds have passed (6 total)")
+}
+
+asyncTestFunction();
+`
+console.log(WHITE_FOREGROUND, ASYNC_AWAIT_TEST);
+eval(ASYNC_AWAIT_TEST)
 
 
 
 
-//Closures

@@ -170,13 +170,32 @@ console.log(returned_value, arr)
 
 console.log(WHITE_FOREGROUND, MUTATOR_TEST)
 eval(MUTATOR_TEST)
-console.log(GREEN_FOREGROUND, "*MUTATOR methods might return values")
-
+console.log(GREEN_FOREGROUND, "*MUTATOR methods may return values")
+console.log("\n\n")
 
 //Promise and Callbacks
+console.log(GREEN_FOREGROUND, "*****Promises and callbacks","\n\n")
+console.log(GREEN_FOREGROUND, "*A promise is an object that represents the result/state of an asynchronous operation.")
+console.log(GREEN_FOREGROUND, "*A promise has 3 states: pending (async operation hasn't finished yet), fulfilled (async op has finished succesfully), rejected (there was an error)\n\n");
 
+console.log(GREEN_FOREGROUND, "*Promises use callbacks to notify you when the change of the state occurs.");
+console.log(GREEN_FOREGROUND, "*A callback is a function/arrow function meant to be used in an asynchronous manner. It is usually passed as an argument.");
 
+const PROMISE_TEST = `
+const fulfilledCallback = (result)=>{
+    console.log("The promise was fulfilled succesfully")
+}
 
+//using setTimeout to ensure true async
+const toBeResolved = (resolve, reject)=>{ setTimeout(()=>{resolve(true)},100)}
+
+let promise = Promise.resolve(toBeResolved) //alternatively we could use "new Promise(toBeResolved)"
+
+promise.then(fulfilledCallback).catch(console.warn)
+`
+console.log(WHITE_FOREGROUND, PROMISE_TEST)
+eval(PROMISE_TEST)
+console.log(GREEN_FOREGROUND, "RESULT IS :")
 
 
 //Await Async

@@ -10,14 +10,16 @@ const SCOPE_TEST = `{
     var var_variable = 1;
     let let_variable = 2;
     const const_variable = 3;
- }`
-console.log(WHITE_FOREGROUND, SCOPE_TEST)
-eval(SCOPE_TEST)
+ }
+ 
 console.log(GREEN_FOREGROUND, "After execution we get: ");
-
 try{ console.log(" var_variable is ", var_variable) } catch(e){console.warn(e)}
 try{ console.log(" let_variable is ", let_variable) } catch(e){console.warn(e)}
 try{ console.log(" const_variable is ", const_variable) } catch(e){console.warn(e)}
+ `
+console.log(WHITE_FOREGROUND, SCOPE_TEST)
+eval(SCOPE_TEST)
+
 
 console.log(GREEN_FOREGROUND,"*var variables can be referenced before declaration while the other two types can't")
 console.log(GREEN_FOREGROUND,"*all variable types are hoisted, the difference is that var is also initialised with undefined")

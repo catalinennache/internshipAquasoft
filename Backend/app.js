@@ -13,5 +13,5 @@ const dburl = process.argv[2]? process.argv[2]: "mongodb://localhost:27017/aquas
     await apolloServer.start();
     apolloServer.applyMiddleware({app})
 
-    app.listen(4000, ()=>{console.log("Listening on port 4000")});
+    app.listen(4000, ()=>{console.log("Listening on port 4000.\n","Access playground via /graphql")});
 })()

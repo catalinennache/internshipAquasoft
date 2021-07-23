@@ -9,7 +9,7 @@ const dburl = process.argv[2]? process.argv[2]: "mongodb://localhost:27017/aquas
     const app = express();
     const apolloServer = new ApolloServer({typeDefs, resolvers})
     
-    await mongoose.connect(dburl,{useNewUrlParser:true, useUnifiedTopology:true})
+    await mongoose.connect(dburl,{useNewUrlParser:true, useUnifiedTopology:true,useFindAndModify:false})
     await apolloServer.start();
     apolloServer.applyMiddleware({app})
 

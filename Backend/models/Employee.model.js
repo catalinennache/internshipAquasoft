@@ -24,6 +24,9 @@ const plainSchema = {
     Job_Title:{
         type:String,
         required: true
+    },
+    Project_id:{
+        type:String
     }
 }
 const EmployeeSchema =  new mongoose.Schema(plainSchema)

@@ -15,11 +15,12 @@ type Project{
      Name: String,
      Adress: String,
      Email: String,
-     Hire_date: String,
+     Hire_Date: String,
      Salary: Int,
-     Job_title: String,
-     Project_id: ID,
-     Project: Project
+     Job_Title: String,
+     Project_ids: [ID],
+     Projects: [Project],
+     Total_Projects: Int
  }
 
  type Query{
@@ -37,7 +38,7 @@ type Project{
     Hire_Date: String,
     Salary: Int,
     Job_Title: String,
-    Project_id: String
+    Project_ids: [ID]
  }
 
  input ProjectInput{

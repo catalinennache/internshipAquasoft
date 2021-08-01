@@ -25,8 +25,8 @@ const plainSchema = {
         type:String,
         required: true
     },
-    Project_id:{
-        type:String
+    Project_ids:{
+        type:Array
     }
 }
 const EmployeeSchema =  new mongoose.Schema(plainSchema)
